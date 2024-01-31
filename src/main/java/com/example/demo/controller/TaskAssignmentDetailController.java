@@ -26,9 +26,15 @@ public class TaskAssignmentDetailController {
         return new ResponseEntity(tsDetailRepository.findById(id),HttpStatus.OK);
     }
 
-    @GetMapping("/findTsOfTeam")
+    @GetMapping("/find-task-assignment-of-Team")
     public ResponseEntity<List<TsDetail>> findTaskByTeam(@RequestParam Long id) {
         List<TsDetail> searchResult = tsDetailRepository.findByTeamId(id);
+        return new ResponseEntity(searchResult, HttpStatus.OK);
+    }
+
+    @GetMapping("/find-by-user-id")
+    public ResponseEntity<List<TsDetail>> findNoteByUser(@RequestParam Long id) {
+        List<TsDetail> searchResult = tsDetailRepository.findAllByUser_id(id);
         return new ResponseEntity(searchResult, HttpStatus.OK);
     }
 }

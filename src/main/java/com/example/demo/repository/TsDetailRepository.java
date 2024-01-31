@@ -11,6 +11,5 @@ public interface TsDetailRepository extends JpaRepository<TsDetail,Long> {
     @Query("select t from TsDetail t where t.team.id = :id")
     List<TsDetail> findByTeamId(Long id);
 
-    @Query("select t.user.id , t.taskItem.id from TsDetail t where t.user = :id ")
-    List<TsDetail> findByNoteId(Long id);
+    List<TsDetail> findAllByUser_id(Long id);
 }

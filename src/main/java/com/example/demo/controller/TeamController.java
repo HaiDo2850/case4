@@ -44,7 +44,7 @@ public class TeamController {
         return new ResponseEntity(teamRepository.findById(id),HttpStatus.OK);
     }
 
-    @GetMapping("/findByUser")
+    @GetMapping("/find-by-user")
     public ResponseEntity<List<Team>> findByUserId(@RequestParam Long id){
         List<Team> searchResult= teamRepository.findTeamByUser(id);
         return new ResponseEntity(searchResult,HttpStatus.OK);

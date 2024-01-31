@@ -2,11 +2,14 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.Note;
+import com.example.demo.model.TsDetail;
 import com.example.demo.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -40,5 +43,11 @@ public class NoteController {
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id){
         return new ResponseEntity(noteRepository.findById(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<Note>> findTaskByTeam(@RequestParam String title) {
+        List<Note> searchResult = noteRepository.findAllByTitleContaining(title);
+        return new ResponseEntity(searchResult, HttpStatus.OK);
     }
 }

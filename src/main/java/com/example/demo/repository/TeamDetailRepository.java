@@ -13,5 +13,4 @@ public interface TeamDetailRepository extends JpaRepository<TeamDetail, Long> {
     @Query("select t from TeamDetail t where t.user.id = :id and t.role = :role ")
     List<TeamDetail> findTeamByUser(Long id , String role);
 
-
 }
