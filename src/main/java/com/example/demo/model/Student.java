@@ -3,22 +3,36 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-public class TaskItem {
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private int age;
     @ManyToOne
-    private TaskAssignment taskAssignment;
+    private Class aClass;
 
-    public TaskItem(Long id, String name, TaskAssignment taskAssignment) {
+    public Student(int age, Class aClass, Long id, String name) {
+        this.age = age;
+        this.aClass = aClass;
         this.id = id;
         this.name = name;
-        this.taskAssignment = taskAssignment;
     }
 
-    public TaskItem() {
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Class getClasses() {
+        return aClass;
+    }
+
+    public void setClasses(Class aClass) {
+        this.aClass = aClass;
     }
 
     public Long getId() {
@@ -37,12 +51,7 @@ public class TaskItem {
         this.name = name;
     }
 
-    public TaskAssignment getTaskAssignment() {
-        return taskAssignment;
-    }
+    public Student() {
 
-    public void setTaskAssignment(TaskAssignment taskAssignment) {
-        this.taskAssignment = taskAssignment;
     }
-
 }

@@ -6,19 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Tag {
+public class Class {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String content;
+    private String name;
 
-
-    public Tag(Long id, String content) {
+    public Class(Long id, String name) {
         this.id = id;
-        this.content = content;
-    }
-
-    public Tag() {
+        this.name = name;
     }
 
     public Long getId() {
@@ -29,12 +25,15 @@ public class Tag {
         this.id = id;
     }
 
-
-    public String getContent() {
-        return content;
+    public String getName() {
+        return name;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Class() {
+
     }
 }
